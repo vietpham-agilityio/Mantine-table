@@ -1,8 +1,7 @@
 {
-  "name": "mantine-react-table-example-row-actions-menu-items",
+  "name": "mantine-react-table-example-custom-column-filtering-ui",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "vite --port 3001",
     "build": "vite build",

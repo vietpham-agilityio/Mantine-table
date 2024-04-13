@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Menu } from '@mantine/core';
 import { type MRT_ColumnDef, MantineReactTable } from '../../src';
 import { type Meta } from '@storybook/react';
 
@@ -209,6 +210,50 @@ export const NestedLoadingDataWithInitialSort = () => {
         isLoading: true,
         sorting: [{ desc: false, id: 'name.lastName' }],
       }}
+    />
+  );
+};
+
+export const EmptyDatasetWithLoadingState = () => {
+  const columns = useMemo<MRT_ColumnDef<Person>[]>(
+    () => [
+      {
+        accessorFn: (row) => row.name.firstName,
+        header: 'First Name',
+      },
+      {
+        accessorKey: 'name.lastName',
+        header: 'Last Name',
+      },
+      {
+        accessorKey: 'address',
+        header: 'Address',
+      },
+      {
+        accessorKey: 'city',
+        header: 'City',
+      },
+      {
+        accessorKey: 'state',
+        header: 'State',
+      },
+    ],
+    [],
+  );
+
+  return (
+    <MantineReactTable
+      columns={columns}
+      data={[]}
+      editDisplayMode="table"
+      enableEditing
+      enableRowActions
+      renderRowActionMenuItems={() => (
+        <>
+          <Menu.Item onClick={() => console.info('Delete')}>Delete</Menu.Item>
+        </>
+      )}
+      state={{ isLoading: true }}
     />
   );
 };

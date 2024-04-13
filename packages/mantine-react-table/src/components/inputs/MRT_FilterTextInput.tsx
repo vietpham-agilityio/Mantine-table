@@ -318,6 +318,7 @@ export const MRT_FilterTextInput = <TData extends MRT_RowData>({
       popoverProps={{ withinPortal: columnFilterDisplayMode !== 'popover' }}
       {...dateInputProps}
       className={clsx(className, dateInputProps.className)}
+      onChange={(event) => commonProps.onChange(event === null ? '' : event)}
       ref={(node) => {
         if (node) {
           filterInputRefs.current[`${column.id}-${rangeFilterIndex ?? 0}`] =

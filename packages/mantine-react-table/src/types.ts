@@ -291,6 +291,7 @@ export type MRT_TableInstance<TData extends MRT_RowData> = Omit<
   getCenterRows: () => MRT_Row<TData>[];
   getColumn: (columnId: string) => MRT_Column<TData>;
   getExpandedRowModel: () => MRT_RowModel<TData>;
+  getFilteredSelectedRowModel: () => MRT_RowModel<TData>;
   getFlatHeaders: () => MRT_Header<TData>[];
   getHeaderGroups: () => MRT_HeaderGroup<TData>[];
   getLeftLeafColumns: () => MRT_Column<TData>[];

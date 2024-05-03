@@ -9,27 +9,27 @@
     "start": "vite"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@mantine/core": "^7.7.1",
-    "@mantine/dates": "^7.7.1",
-    "@mantine/hooks": "^7.7.1",
-    "@tabler/icons-react": "3.1.0",
-    "clsx": "^2.1.0",
-    "dayjs": "^1.11.10",
+    "@mantine/core": "^7.9.0",
+    "@mantine/dates": "^7.9.0",
+    "@mantine/hooks": "^7.9.0",
+    "@tabler/icons-react": "3.3.0",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
     "mantine-react-table": "^2.0.0-beta.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.23",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "postcss": "^8.4.38",
-    "postcss-preset-mantine": "^1.13.0",
+    "postcss-preset-mantine": "^1.15.0",
     "postcss-simple-vars": "^7.0.1",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.7"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
   }
 }

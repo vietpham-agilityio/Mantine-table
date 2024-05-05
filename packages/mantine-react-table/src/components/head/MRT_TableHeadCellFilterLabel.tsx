@@ -141,6 +141,7 @@ export const MRT_TableHeadCellFilterLabel = <TData extends MRT_RowData>({
             onKeyDown={(event) =>
               event.key === 'Enter' && setPopoverOpened(false)
             }
+            onMouseDown={(event) => event.stopPropagation()}
           >
             <MRT_TableHeadCellFilterContainer header={header} table={table} />
           </Popover.Dropdown>

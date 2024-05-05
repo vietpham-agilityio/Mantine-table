@@ -1322,8 +1322,9 @@ export const tableOptions: TableOption[] = [
   },
   {
     tableOption: 'mantineFilterMultiSelectProps',
-    defaultValue: '',
-    description: '',
+    defaultValue: '{ clearable: true }',
+    description:
+      'If using this property, make sure to pass clearable true otherwise the clear button will not work.',
     link: 'https://mantine.dev/core/multi-select/?t=props',
     linkText: 'Mantine MultiSelect Docs',
     required: false,

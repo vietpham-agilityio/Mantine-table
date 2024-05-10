@@ -11,6 +11,7 @@ export const MRT_Localization_SR_LATN_RS: MRT_Localization = {
   clearSelection: 'Poništi izbor',
   clearSort: 'Poništi sortiranje',
   clickToCopy: 'Klikni da kopiraš',
+  copy: 'Kopiraj',
   collapse: 'Raširi',
   collapseAll: 'Raširi sve',
   columnActions: 'Akcije nad kolonama',

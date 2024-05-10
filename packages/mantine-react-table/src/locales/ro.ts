@@ -11,6 +11,7 @@ export const MRT_Localization_RO: MRT_Localization = {
   clearSelection: 'Curăță selecția',
   clearSort: 'Curăță sortarea',
   clickToCopy: 'Apasă pentru a copia',
+  copy: 'Copiază',
   collapse: 'Restrânge',
   collapseAll: 'Restrânge tot',
   columnActions: 'Acțiuni Coloană',

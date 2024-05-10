@@ -11,6 +11,7 @@ export const MRT_Localization_KO: MRT_Localization = {
   clearSelection: '선택 초기화',
   clearSort: '정렬 초기화',
   clickToCopy: '클릭하여 복사하기',
+  copy: '복사',
   collapse: '행 접기',
   collapseAll: '전체 접기',
   columnActions: '열 동작',

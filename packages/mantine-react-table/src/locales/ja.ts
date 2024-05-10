@@ -11,6 +11,7 @@ export const MRT_Localization_JA: MRT_Localization = {
   clearSelection: '選択を解除',
   clearSort: '並べ替えを解除',
   clickToCopy: 'クリックでコピー',
+  copy: 'コピー',
   collapse: '折りたたむ',
   collapseAll: 'すべて折りたたむ',
   columnActions: '操作',

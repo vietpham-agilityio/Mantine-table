@@ -11,6 +11,7 @@ export const MRT_Localization_SV: MRT_Localization = {
   clearSelection: 'Rensa val',
   clearSort: 'Rensa sortering',
   clickToCopy: 'Klicka för att kopiera',
+  copy: 'Kopiera',
   collapse: 'Stäng',
   collapseAll: 'Stäng alla',
   columnActions: 'Kolumnåtgärd',

@@ -11,6 +11,7 @@ export const MRT_Localization_AZ: MRT_Localization = {
   clearSelection: 'Seçimi təmizlə',
   clearSort: 'Sıralamanı sıfırla',
   clickToCopy: 'Köçür',
+  copy: 'Köçür',
   columnActions: 'Sütun Əməliyyatları',
   copiedToClipboard: 'Panelə Köçürüldü',
   collapse: 'Daralt',

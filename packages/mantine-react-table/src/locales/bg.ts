@@ -11,6 +11,7 @@ export const MRT_Localization_BG: MRT_Localization = {
   clearSelection: 'Изчисти избора',
   clearSort: 'Изчисти сортирането',
   clickToCopy: 'Кликни, за да копираш',
+  copy: 'Копирай',
   collapse: 'Свий',
   collapseAll: 'Свий всички',
   columnActions: 'Действия за колони',

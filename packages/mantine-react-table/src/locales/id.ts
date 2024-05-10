@@ -11,6 +11,7 @@ export const MRT_Localization_ID: MRT_Localization = {
   clearSelection: 'Hapus pilihan',
   clearSort: 'Hapus urutan',
   clickToCopy: 'Klik untuk menyalin',
+  copy: 'Salin',
   collapse: 'Ciutkan',
   collapseAll: 'Ciutkan semua',
   columnActions: 'Aksi Kolom',

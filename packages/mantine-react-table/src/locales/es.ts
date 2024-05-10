@@ -11,6 +11,7 @@ export const MRT_Localization_ES: MRT_Localization = {
   clearSelection: 'Borrar selección',
   clearSort: 'Borrar ordenamiento',
   clickToCopy: 'Haga click para copiar',
+  copy: 'Copiar',
   collapse: 'Colapsar',
   collapseAll: 'Colapsar todo',
   columnActions: 'Columna de acciones',

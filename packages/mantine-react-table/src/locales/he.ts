@@ -11,6 +11,7 @@ export const MRT_Localization_HE: MRT_Localization = {
   clearSelection: 'נקה בחירה',
   clearSort: 'נקה מיון',
   clickToCopy: 'לחץ להעתקה',
+  copy: 'העתק',
   collapse: 'צמצום',
   collapseAll: 'צמצום הכל',
   columnActions: 'פעולות עמודה',

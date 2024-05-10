@@ -11,6 +11,7 @@ export const MRT_Localization_ET: MRT_Localization = {
   clearSelection: 'Tühjenda valik',
   clearSort: 'Tühjenda sorteerimine',
   clickToCopy: 'Klõpsa kopeerimiseks',
+  copy: 'Kopeeri',
   collapse: 'Ahenda',
   collapseAll: 'Ahenda kõik',
   columnActions: 'Veeru toimingud',

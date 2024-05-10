@@ -11,6 +11,7 @@ export const MRT_Localization_VI: MRT_Localization = {
   clearSelection: 'Xoá lựa chọn',
   clearSort: 'Huỷ sắp xếp',
   clickToCopy: 'Nhấn vào để sao chép',
+  copy: 'Sao chép',
   columnActions: 'Lựa chọn',
   copiedToClipboard: 'Sao chép vào bảng tạm',
   collapse: 'Thu gọn',

@@ -11,6 +11,7 @@ export const MRT_Localization_RU: MRT_Localization = {
   clearSelection: 'Очистить выбор',
   clearSort: 'Очистить сортировку',
   clickToCopy: 'Нажмите, чтобы скопировать',
+  copy: 'Копировать',
   columnActions: 'Действие колонки',
   copiedToClipboard: 'Скопировано в буфер обмена',
   collapse: 'Свернуть',

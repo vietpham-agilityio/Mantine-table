@@ -18,12 +18,12 @@
     "@tabler/icons-react": "3.3.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
-    "mantine-react-table": "^2.0.0-beta.2",
+    "mantine-react-table": "^2.0.0-beta.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "postcss": "^8.4.38",

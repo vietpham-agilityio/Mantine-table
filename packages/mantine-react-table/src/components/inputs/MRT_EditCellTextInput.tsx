@@ -1,5 +1,5 @@
 import { type FocusEvent, type KeyboardEvent, useState } from 'react';
-import { Select, TextInput, type TextInputProps } from '@mantine/core';
+import { MultiSelect, Select, TextInput, type TextInputProps } from '@mantine/core';
 import {
   type MRT_Cell,
   type MRT_CellValue,
@@ -39,6 +39,7 @@ export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
   const isCreating = creatingRow?.id === row.id;
   const isEditing = editingRow?.id === row.id;
   const isSelectEdit = columnDef.editVariant === 'select';
+  const isMultiSelectEdit = columnDef.editVariant === 'multi-select';
 
   const [value, setValue] = useState(() => cell.getValue<any>());
 
@@ -107,6 +108,35 @@ export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
     return (
       // @ts-ignore
       <Select
+        {...commonProps}
+        searchable
+        value={value}
+        {...selectProps}
+        onBlur={handleBlur}
+        onChange={(value) => {
+          selectProps.onChange?.(value as any);
+          setValue(value);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          selectProps?.onClick?.(e);
+        }}
+        ref={(node) => {
+          if (node) {
+            editInputRefs.current[cell.id] = node;
+            if (selectProps.ref) {
+              selectProps.ref.current = node;
+            }
+          }
+        }}
+      />
+    );
+  }
+
+  if (isMultiSelectEdit) {
+    return (
+      // @ts-ignore
+      <MultiSelect
         {...commonProps}
         searchable
         value={value}

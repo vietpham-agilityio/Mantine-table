@@ -79,6 +79,7 @@ type Person = {
   lastName: string;
   phoneNumber: string;
   state: string;
+  visitedStates: string[];
 };
 
 const data: Person[] = [...Array(100)].map(() => ({
@@ -87,6 +88,7 @@ const data: Person[] = [...Array(100)].map(() => ({
   lastName: faker.person.lastName(),
   phoneNumber: faker.phone.number(),
   state: faker.location.state(),
+  visitedStates: faker.helpers.multiple(faker.location.state),
 }));
 
 export const EditingEnabledEditModeModalDefault = () => {
@@ -361,6 +363,56 @@ export const CustomEditModal = () => {
           </Stack>
         );
       }}
+    />
+  );
+};
+
+export const EditMultiSelectVariant = () => {
+  const [tableData, setTableData] = useState(data);
+
+  const handleSaveRow: MRT_TableOptions<Person>['onEditingRowSave'] = ({
+    exitEditingMode,
+    row,
+    values,
+  }) => {
+    tableData[+row.index] = values;
+    setTableData([...tableData]);
+    exitEditingMode();
+  };
+
+  return (
+    <MantineReactTable
+      columns={[
+        {
+          accessorKey: 'firstName',
+          header: 'First Name',
+        },
+        {
+          accessorKey: 'lastName',
+          header: 'Last Name',
+        },
+        {
+          accessorKey: 'address',
+          header: 'Address',
+        },
+        {
+          accessorKey: 'visitedStates',
+          editVariant: 'multi-select',
+          header: 'Visited States',
+          mantineEditSelectProps: {
+            data: usStates as any,
+          },
+        },
+        {
+          accessorKey: 'phoneNumber',
+          header: 'Phone Number',
+        },
+      ]}
+      data={tableData}
+      editDisplayMode="row"
+      enableEditing
+      enableRowActions
+      onEditingRowSave={handleSaveRow}
     />
   );
 };

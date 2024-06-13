@@ -491,7 +491,7 @@ export type MRT_ColumnDef<TData extends MRT_RowData, TValue = unknown> = Omit<
     LiteralUnion<string & MRT_FilterOption>
   > | null;
   columns?: MRT_ColumnDef<TData>[];
-  editVariant?: 'select' | 'text';
+  editVariant?: 'select' | 'text' | 'multi-select';
   enableClickToCopy?: ((cell: MRT_Cell<TData>) => boolean) | boolean;
   enableColumnActions?: boolean;
   enableColumnDragging?: boolean;

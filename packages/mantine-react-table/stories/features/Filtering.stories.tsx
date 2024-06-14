@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Flex } from '@mantine/core';
+import { Button, Checkbox, Flex, Group, SegmentedControl } from '@mantine/core';
 import {
   type MRT_ColumnDef,
   type MRT_ColumnFiltersState,
@@ -7,6 +7,17 @@ import {
 } from '../../src';
 import { faker } from '@faker-js/faker';
 import { type Meta } from '@storybook/react';
+
+import { MRT_Localization_EN } from '../../src/locales/en';
+import { MRT_Localization_JA } from '../../src/locales/ja';
+
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+dayjs.extend(isBetween);
+dayjs.extend(localizedFormat);
+import Dayjs_EN from 'dayjs/locale/en';
+import Dayjs_JA from 'dayjs/locale/ja';
 
 const meta: Meta = {
   title: 'Features/Filtering Examples',
@@ -730,3 +741,120 @@ export const ExternalSetFilterValue = () => (
     )}
   />
 );
+
+export const CustomTooltipValueFn = () => {
+  const [localization, setLocalization] = useState(MRT_Localization_EN);
+  const [locale, setLocale] = useState<string | undefined>('en');
+  const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
+    [],
+  );
+  const [isActiveValueFn, setIsActiveValueFn] = useState<any>(undefined);
+  const [dateValueFn, setDateValueFn] = useState<any>(undefined);
+  const [enableValueFns, setEnableValueFns] = useState(true);
+
+  const formatDate = (date: any, format: string) => {
+    const d = dayjs(date || '');
+    return d.isValid() ? d.format(format) : '';
+  };
+  const formatIsActiveValue = () => (value: any) =>
+    value === 'true' ? 'Yes' : 'No';
+  const formatDateValue = () => (value: any) => formatDate(value, 'L');
+
+  useEffect(() => {
+    switch (locale) {
+      case 'en':
+        setLocalization(MRT_Localization_EN);
+        dayjs.locale(Dayjs_EN);
+        break;
+      case 'ja':
+        setLocalization(MRT_Localization_JA);
+        dayjs.locale(Dayjs_JA);
+        break;
+    }
+  }, [locale]);
+
+  useEffect(() => {
+    if (enableValueFns) {
+      setIsActiveValueFn(formatIsActiveValue);
+      setDateValueFn(formatDateValue);
+    } else {
+      setIsActiveValueFn(undefined);
+      setDateValueFn(undefined);
+    }
+  }, [enableValueFns]);
+
+  return (
+    <>
+      <MantineReactTable
+        renderTopToolbarCustomActions={() => (
+          <Group>
+            <Checkbox
+              label="Enable Custom Tooltip Value Fn"
+              checked={enableValueFns}
+              onChange={(event) =>
+                setEnableValueFns(event.currentTarget.checked)
+              }
+            />
+            <SegmentedControl
+              data={['en', 'ja']}
+              value={locale}
+              onChange={setLocale}
+            />
+          </Group>
+        )}
+        localization={localization}
+        columns={[
+          {
+            Cell: ({ cell }) => (cell.getValue() === 'true' ? 'Yes' : 'No'),
+            accessorFn: (originalRow) =>
+              originalRow.isActive ? 'true' : 'false',
+            filterVariant: 'checkbox',
+            filterTooltipValueFn: isActiveValueFn, //transform data to readable format for tooltip
+            header: 'Is Active',
+            id: 'isActive',
+            size: 200,
+          },
+          {
+            accessorKey: 'firstName',
+            header: 'First Name',
+          },
+          {
+            accessorKey: 'lastName',
+            header: 'Last Name',
+          },
+          {
+            Cell: ({ cell }) => formatDate(cell.getValue<Date>(), 'L'), //transform data to readable format for cell render
+            mantineFilterDateInputProps: {
+              locale: locale,
+              valueFormat: 'L',
+            },
+            accessorFn: (row) => new Date(row.birthDate), //transform data before processing so sorting works
+            accessorKey: 'birthDate',
+            filterVariant: 'date',
+            filterTooltipValueFn: dateValueFn, //transform data to readable format for tooltip
+            header: 'Birth Date (date)',
+            sortingFn: 'datetime',
+          },
+          {
+            Cell: ({ cell }) => formatDate(cell.getValue<Date>(), 'L'), //transform data to readable format for cell render
+            mantineFilterDateInputProps: {
+              locale: locale,
+              valueFormat: 'L',
+            },
+            accessorFn: (row) => new Date(row.birthDate), //transform data before processing so sorting works
+            accessorKey: 'birthDateRange',
+            filterVariant: 'date-range',
+            filterTooltipValueFn: dateValueFn, //transform data to readable format for tooltip
+            header: 'Birth Date (date-range)',
+            sortingFn: 'datetime',
+          },
+        ]}
+        data={data}
+        onColumnFiltersChange={setColumnFilters}
+        state={{
+          columnFilters,
+        }}
+      />
+    </>
+  );
+};

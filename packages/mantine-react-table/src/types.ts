@@ -500,6 +500,7 @@ export type MRT_ColumnDef<TData extends MRT_RowData, TValue = unknown> = Omit<
   enableEditing?: ((row: MRT_Row<TData>) => boolean) | boolean;
   enableFilterMatchHighlighting?: boolean;
   filterFn?: MRT_FilterFn<TData>;
+  filterTooltipValueFn?: (value: any) => string,
   filterVariant?:
     | 'autocomplete'
     | 'checkbox'

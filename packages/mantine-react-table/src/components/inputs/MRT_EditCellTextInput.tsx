@@ -1,6 +1,14 @@
 import { type FocusEvent, type KeyboardEvent, useState } from 'react';
-import { MultiSelect, Select, TextInput, type TextInputProps } from '@mantine/core';
+import { 
+  MultiSelect,
+  Select,
+  TextInput,
+  type TextInputProps,
+  type SelectProps,
+  type MultiSelectProps
+} from '@mantine/core';
 import {
+  type HTMLPropsRef,
   type MRT_Cell,
   type MRT_CellValue,
   type MRT_RowData,
@@ -8,17 +16,34 @@ import {
 } from '../../types';
 import { parseFromValuesOrFunc } from '../../utils/utils';
 
-interface Props<TData extends MRT_RowData, TValue = MRT_CellValue>
+
+interface PropsTextInput<TData extends MRT_RowData, TValue = MRT_CellValue>
   extends TextInputProps {
   cell: MRT_Cell<TData, TValue>;
   table: MRT_TableInstance<TData>;
 }
 
+interface PropsSelect<TData extends MRT_RowData, TValue = MRT_CellValue>
+  extends SelectProps {
+  cell: MRT_Cell<TData, TValue>;
+  table: MRT_TableInstance<TData>;
+}
+
+interface PropsMultiSelect<TData extends MRT_RowData, TValue = MRT_CellValue>
+  extends MultiSelectProps {
+  cell: MRT_Cell<TData, TValue>;
+  table: MRT_TableInstance<TData>;
+}
+
+type MRT_TextInputProps = TextInputProps & HTMLPropsRef<HTMLInputElement>
+type MRT_SelectProps = SelectProps & HTMLPropsRef<HTMLInputElement>
+type MRT_MultiSelectProps = MultiSelectProps & HTMLPropsRef<HTMLInputElement>
+
 export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
   cell,
   table,
   ...rest
-}: Props<TData>) => {
+}: PropsTextInput<TData> | PropsSelect<TData> | PropsMultiSelect<TData>) => {
   const {
     getState,
     options: {
@@ -48,7 +73,7 @@ export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
     ...parseFromValuesOrFunc(mantineEditTextInputProps, arg),
     ...parseFromValuesOrFunc(columnDef.mantineEditTextInputProps, arg),
     ...rest,
-  };
+  } as MRT_TextInputProps;
 
   const selectProps = {
     ...parseFromValuesOrFunc(mantineEditSelectProps, arg),
@@ -106,15 +131,14 @@ export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
 
   if (isSelectEdit) {
     return (
-      // @ts-ignore
       <Select
         {...commonProps}
         searchable
-        value={value}
-        {...selectProps}
+        value={value as any}
+        {...(selectProps as MRT_SelectProps)}
         onBlur={handleBlur}
         onChange={(value) => {
-          selectProps.onChange?.(value as any);
+          (selectProps as MRT_SelectProps).onChange?.(value as any);
           setValue(value);
         }}
         onClick={(e) => {
@@ -135,15 +159,14 @@ export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
 
   if (isMultiSelectEdit) {
     return (
-      // @ts-ignore
       <MultiSelect
         {...commonProps}
         searchable
         value={value}
-        {...selectProps}
+        {...(selectProps as MRT_MultiSelectProps)}
         onBlur={handleBlur}
         onChange={(value) => {
-          selectProps.onChange?.(value as any);
+          (selectProps as MRT_MultiSelectProps).onChange?.(value as any);
           setValue(value);
         }}
         onClick={(e) => {

@@ -6,6 +6,7 @@ import {
   MRT_EditActionButtons,
   type MRT_TableOptions,
   MantineReactTable,
+  MRT_ColumnDef,
 } from '../../src';
 import { faker } from '@faker-js/faker';
 import { type Meta } from '@storybook/react';
@@ -366,7 +367,35 @@ export const CustomEditModal = () => {
     />
   );
 };
-
+const multiSelectColumns: MRT_ColumnDef<Person>[] = [
+  {
+    accessorKey: 'firstName',
+    header: 'First Name',
+  },
+  {
+    accessorKey: 'lastName',
+    header: 'Last Name',
+  },
+  {
+    accessorKey: 'address',
+    header: 'Address',
+  },
+  {
+    accessorKey: 'visitedStates',
+    editVariant: 'multi-select',
+    header: 'Visited States',
+    mantineEditSelectProps: {
+      data: usStates as any,
+    },
+    Cell: ({ cell }) => {
+      return (cell.getValue() as string[]).join(', ');
+    },
+  },
+  {
+    accessorKey: 'phoneNumber',
+    header: 'Phone Number',
+  },
+];
 export const EditMultiSelectVariant = () => {
   const [tableData, setTableData] = useState(data);
 
@@ -382,32 +411,7 @@ export const EditMultiSelectVariant = () => {
 
   return (
     <MantineReactTable
-      columns={[
-        {
-          accessorKey: 'firstName',
-          header: 'First Name',
-        },
-        {
-          accessorKey: 'lastName',
-          header: 'Last Name',
-        },
-        {
-          accessorKey: 'address',
-          header: 'Address',
-        },
-        {
-          accessorKey: 'visitedStates',
-          editVariant: 'multi-select',
-          header: 'Visited States',
-          mantineEditSelectProps: {
-            data: usStates as any,
-          },
-        },
-        {
-          accessorKey: 'phoneNumber',
-          header: 'Phone Number',
-        },
-      ]}
+      columns={multiSelectColumns}
       data={tableData}
       editDisplayMode="row"
       enableEditing

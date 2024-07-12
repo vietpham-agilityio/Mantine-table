@@ -24,7 +24,7 @@
   &:not([data-selected], [data-row-pinned]) {
     td {
       &[data-column-pinned] {
-        &:before {
+        &::before {
           background-color: var(--mrt-pinned-column-background-color);
         }
       }
@@ -32,7 +32,7 @@
     &[data-striped='odd'] {
       td {
         &[data-column-pinned] {
-          &:before {
+          &::before {
             background-color: var(--mrt-striped-row-background-color);
           }
         }
@@ -41,7 +41,7 @@
     &[data-striped='even'] {
       td {
         &[data-column-pinned] {
-          &:before {
+          &::before {
             background-color: var(--mrt-striped-row-background-color);
           }
         }
@@ -56,7 +56,7 @@
       position: sticky;
       z-index: 1;
 
-      &:before {
+      &::before {
         content: '';
         height: 100%;
         left: 0;
@@ -69,7 +69,7 @@
       &[data-column-pinned='left'] {
         left: calc(var(--mrt-table-cell-left, 0) * 1px);
         &[data-last-left-pinned] {
-          &:before {
+          &::before {
             box-shadow: -6px 0 6px -6px alpha(
                 light-dark(
                   var(--mantine-color-gray-outline),
@@ -84,7 +84,7 @@
       &[data-column-pinned='right'] {
         right: calc(var(--mrt-table-cell-right, 0) * 1px);
         &[data-first-right-pinned] {
-          &:before {
+          &::before {
             box-shadow: 6px 0 6px -6px alpha(
                 light-dark(
                   var(--mantine-color-gray-outline),
@@ -98,19 +98,28 @@
     }
   }
   /* end column pinning styles */
-
   /* row pinning styles */
   &[data-row-pinned] {
-    background-color: var(--mrt-pinned-row-background-color);
-    bottom: calc(var(--mrt-pinned-row-bottom, unset) * 1px);
+    background-color: var(--mantine-color-body);
+    bottom: calc(var(--mrt-pinned-row-bottom) * 1px);
     opacity: 0.97;
-    top: calc(var(--mrt-pinned-row-top, unset) * 1px);
+    top: calc(var(--mrt-pinned-row-top) * 1px);
 
     td {
+      &::before {
+        background-color: var(--mrt-pinned-row-background-color);
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+      }
       &[data-column-pinned] {
         background-color: var(--mrt-pinned-column-background-color);
 
-        &:before {
+        &::before {
           background-color: var(--mrt-pinned-row-background-color);
           content: '';
           height: 100%;
@@ -132,13 +141,13 @@
 
   /* selection styles */
   &[data-selected] {
-    background-color: var(--mrt-selected-row-background-color);
+    background-color: var(--mantine-color-body);
 
     td {
       &[data-column-pinned] {
         background-color: var(--mrt-pinned-column-background-color);
 
-        &:before {
+        &::before {
           background-color: var(--mrt-selected-row-background-color);
         }
       }
@@ -152,7 +161,7 @@
         background-color: var(--mrt-row-hover-background-color);
         &[data-column-pinned] {
           background-color: var(--mrt-base-background-color);
-          &:before {
+          &::before {
             background-color: var(--mrt-row-hover-background-color);
           }
         }
@@ -163,7 +172,7 @@
             background-color: var(--mrt-striped-row-hover-background-color);
             &[data-column-pinned] {
               background-color: var(--mrt-base-background-color);
-              &:before {
+              &::before {
                 background-color: var(--mrt-striped-row-hover-background-color);
               }
             }
@@ -174,7 +183,7 @@
             background-color: var(--mrt-striped-row-hover-background-color);
             &[data-column-pinned] {
               background-color: var(--mrt-base-background-color);
-              &:before {
+              &::before {
                 background-color: var(--mrt-striped-row-hover-background-color);
               }
             }
@@ -188,7 +197,7 @@
           &[data-column-pinned] {
             background-color: var(--mrt-base-background-color);
 
-            &:before {
+            &::before {
               background-color: var(--mrt-selected-row-hover-background-color);
             }
           }

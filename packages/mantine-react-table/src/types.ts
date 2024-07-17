@@ -500,7 +500,7 @@ export type MRT_ColumnDef<TData extends MRT_RowData, TValue = unknown> = Omit<
   enableEditing?: ((row: MRT_Row<TData>) => boolean) | boolean;
   enableFilterMatchHighlighting?: boolean;
   filterFn?: MRT_FilterFn<TData>;
-  filterTooltipValueFn?: (value: any) => string,
+  filterTooltipValueFn?: MRT_FilterTooltipValueFn,
   filterVariant?:
     | 'autocomplete'
     | 'checkbox'
@@ -736,6 +736,8 @@ export type MRT_FilterOption = LiteralUnion<
 export type MRT_FilterFn<TData extends MRT_RowData> =
   | FilterFn<TData>
   | MRT_FilterOption;
+
+export type MRT_FilterTooltipValueFn<TValue = any> = (value: TValue) => string;
 
 export type MRT_InternalFilterOption = {
   divider: boolean;

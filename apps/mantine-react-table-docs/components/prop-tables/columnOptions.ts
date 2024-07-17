@@ -316,7 +316,7 @@ export const columnOptions: ColumnOption[] = [
     linkText: '',
     source: 'MRT',
     required: false,
-    type: "(value: any) => string",    
+    type: "MRT_FilterTooltipValueFn",    
   },
   {
     columnOption: 'filterVariant',

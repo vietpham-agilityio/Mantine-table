@@ -3,6 +3,7 @@ import { Button, Checkbox, Flex, Group, SegmentedControl } from '@mantine/core';
 import {
   type MRT_ColumnDef,
   type MRT_ColumnFiltersState,
+  type MRT_FilterTooltipValueFn,
   MantineReactTable,
 } from '../../src';
 import { faker } from '@faker-js/faker';
@@ -748,17 +749,17 @@ export const CustomTooltipValueFn = () => {
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
     [],
   );
-  const [isActiveValueFn, setIsActiveValueFn] = useState<any>(undefined);
-  const [dateValueFn, setDateValueFn] = useState<any>(undefined);
+  const [isActiveValueFn, setIsActiveValueFn] = useState<MRT_FilterTooltipValueFn<string>|undefined>(undefined);
+  const [dateValueFn, setDateValueFn] = useState<MRT_FilterTooltipValueFn<Date>|undefined>(undefined);
   const [enableValueFns, setEnableValueFns] = useState(true);
 
   const formatDate = (date: any, format: string) => {
     const d = dayjs(date || '');
     return d.isValid() ? d.format(format) : '';
   };
-  const formatIsActiveValue = () => (value: any) =>
+  const formatIsActiveValue = () => (value: string) =>
     value === 'true' ? 'Yes' : 'No';
-  const formatDateValue = () => (value: any) => formatDate(value, 'L');
+  const formatDateValue = () => (value: Date) => formatDate(value, 'L');
 
   useEffect(() => {
     switch (locale) {

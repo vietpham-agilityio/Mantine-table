@@ -134,7 +134,7 @@ export const columnOptions: ColumnOption[] = [
     linkText: 'MRT Editing Docs',
     source: 'MRT',
     required: false,
-    type: "'select' | 'text'",
+    type: "'select' | 'text' | 'multi-select'",
   },
   {
     columnOption: 'enableClickToCopy',

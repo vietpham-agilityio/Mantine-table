@@ -59,7 +59,7 @@ export const MRT_ExpandButton = <TData extends MRT_RowData>({
     <Tooltip
       disabled={!canExpand && !DetailPanel}
       label={
-        actionIconProps?.title ?? isExpanded
+        (actionIconProps?.title ?? isExpanded)
           ? localization.collapse
           : localization.expand
       }

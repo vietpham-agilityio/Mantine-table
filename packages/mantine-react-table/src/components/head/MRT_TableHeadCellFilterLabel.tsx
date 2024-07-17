@@ -54,6 +54,9 @@ export const MRT_TableHeadCellFilterLabel = <TData extends MRT_RowData>({
       columnDef._filterFn,
     );
   const currentFilterOption = columnDef._filterFn;
+  const filterValueFn =
+    columnDef.filterTooltipValueFn || ((value) => value as string);
+  type FilterValueType = Parameters<typeof filterValueFn>[0];
   const filterTooltip =
     columnFilterDisplayMode === 'popover' && !isFilterActive
       ? localization.filterByColumn?.replace(
@@ -70,10 +73,17 @@ export const MRT_TableHeadCellFilterLabel = <TData extends MRT_RowData>({
             '{filterValue}',
             `"${
               Array.isArray(column.getFilterValue())
-                ? (column.getFilterValue() as [string, string]).join(
-                    `" ${isRangeFilter ? localization.and : localization.or} "`,
+                ? (
+                    column.getFilterValue() as [
+                      FilterValueType,
+                      FilterValueType,
+                    ]
                   )
-                : (column.getFilterValue() as string)
+                    .map((v) => filterValueFn(v))
+                    .join(
+                      `" ${isRangeFilter ? localization.and : localization.or} "`,
+                    )
+                : filterValueFn(column.getFilterValue())
             }"`,
           )
           .replace('" "', '');

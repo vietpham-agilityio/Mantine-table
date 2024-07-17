@@ -147,7 +147,7 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
           header,
           table,
         })
-      : columnDef?.Header ?? (columnDef.header as ReactNode);
+      : (columnDef?.Header ?? (columnDef.header as ReactNode));
 
   return (
     <TableTh
@@ -215,7 +215,7 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
     >
       {header.isPlaceholder
         ? null
-        : tableCellProps.children ?? (
+        : (tableCellProps.children ?? (
             <Flex
               className={clsx(
                 'mrt-table-head-cell-content',
@@ -299,7 +299,7 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
                 <MRT_TableHeadCellResizeHandle header={header} table={table} />
               )}
             </Flex>
-          )}
+          ))}
       {columnFilterDisplayMode === 'subheader' && column.getCanFilter() && (
         <MRT_TableHeadCellFilterContainer header={header} table={table} />
       )}

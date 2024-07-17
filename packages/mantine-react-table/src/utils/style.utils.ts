@@ -6,7 +6,7 @@ export const parseCSSVarId = (id: string) => id.replace(/[^a-zA-Z0-9]/g, '_');
 export const getPrimaryShade = (theme: MantineTheme): number =>
   typeof theme.primaryShade === 'number'
     ? theme.primaryShade
-    : theme.primaryShade?.dark ?? 7;
+    : (theme.primaryShade?.dark ?? 7);
 
 export const getPrimaryColor = (
   theme: MantineTheme,

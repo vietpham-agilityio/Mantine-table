@@ -39,7 +39,7 @@ export const MRT_ExpandAllButton = <TData extends MRT_RowData>({
   return (
     <Tooltip
       label={
-        actionIconProps?.title ?? isAllRowsExpanded
+        (actionIconProps?.title ?? isAllRowsExpanded)
           ? localization.collapseAll
           : localization.expandAll
       }

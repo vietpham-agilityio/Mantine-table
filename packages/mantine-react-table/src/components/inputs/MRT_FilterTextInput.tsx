@@ -99,8 +99,11 @@ export const MRT_FilterTextInput = <TData extends MRT_RowData>({
     ? localizedFilterOption(localization, currentFilterOption)
     : '';
   const filterPlaceholder = !isRangeFilter
-    ? textInputProps?.placeholder ??
-      localization.filterByColumn?.replace('{column}', String(columnDef.header))
+    ? (textInputProps?.placeholder ??
+      localization.filterByColumn?.replace(
+        '{column}',
+        String(columnDef.header),
+      ))
     : rangeFilterIndex === 0
       ? localization.min
       : rangeFilterIndex === 1
@@ -144,7 +147,7 @@ export const MRT_FilterTextInput = <TData extends MRT_RowData>({
         ? (column.getFilterValue() as [string, string])?.[
             rangeFilterIndex as number
           ] || ''
-        : (column.getFilterValue() as string) ?? '',
+        : ((column.getFilterValue() as string) ?? ''),
   );
 
   const [debouncedFilterValue] = useDebouncedValue(

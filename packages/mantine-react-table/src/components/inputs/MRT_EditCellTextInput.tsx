@@ -1,11 +1,11 @@
 import { type FocusEvent, type KeyboardEvent, useState } from 'react';
-import { 
+import {
   MultiSelect,
   Select,
   TextInput,
   type TextInputProps,
   type SelectProps,
-  type MultiSelectProps
+  type MultiSelectProps,
 } from '@mantine/core';
 import {
   type HTMLPropsRef,
@@ -15,7 +15,6 @@ import {
   type MRT_TableInstance,
 } from '../../types';
 import { parseFromValuesOrFunc } from '../../utils/utils';
-
 
 interface PropsTextInput<TData extends MRT_RowData, TValue = MRT_CellValue>
   extends TextInputProps {
@@ -35,9 +34,9 @@ interface PropsMultiSelect<TData extends MRT_RowData, TValue = MRT_CellValue>
   table: MRT_TableInstance<TData>;
 }
 
-type MRT_TextInputProps = TextInputProps & HTMLPropsRef<HTMLInputElement>
-type MRT_SelectProps = SelectProps & HTMLPropsRef<HTMLInputElement>
-type MRT_MultiSelectProps = MultiSelectProps & HTMLPropsRef<HTMLInputElement>
+type MRT_TextInputProps = TextInputProps & HTMLPropsRef<HTMLInputElement>;
+type MRT_SelectProps = SelectProps & HTMLPropsRef<HTMLInputElement>;
+type MRT_MultiSelectProps = MultiSelectProps & HTMLPropsRef<HTMLInputElement>;
 
 export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
   cell,

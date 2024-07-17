@@ -49,6 +49,7 @@ export const MRT_TableHeadCellFilterLabel = <TData extends MRT_RowData>({
 
   const isRangeFilter =
     columnDef.filterVariant === 'range' ||
+    columnDef.filterVariant === 'date-range' ||
     ['between', 'betweenInclusive', 'inNumberRange'].includes(
       columnDef._filterFn,
     );

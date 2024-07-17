@@ -749,8 +749,12 @@ export const CustomTooltipValueFn = () => {
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
     [],
   );
-  const [isActiveValueFn, setIsActiveValueFn] = useState<MRT_FilterTooltipValueFn<string>|undefined>(undefined);
-  const [dateValueFn, setDateValueFn] = useState<MRT_FilterTooltipValueFn<Date>|undefined>(undefined);
+  const [isActiveValueFn, setIsActiveValueFn] = useState<
+    MRT_FilterTooltipValueFn<string> | undefined
+  >(undefined);
+  const [dateValueFn, setDateValueFn] = useState<
+    MRT_FilterTooltipValueFn<Date> | undefined
+  >(undefined);
   const [enableValueFns, setEnableValueFns] = useState(true);
 
   const formatDate = (date: any, format: string) => {

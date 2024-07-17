@@ -310,13 +310,12 @@ export const columnOptions: ColumnOption[] = [
   {
     columnOption: 'filterTooltipValueFn',
     defaultValue: '',
-    description:
-      'Specify to transform tooltip values to a readable format.',
+    description: 'Specify to transform tooltip values to a readable format.',
     link: '',
     linkText: '',
     source: 'MRT',
     required: false,
-    type: "MRT_FilterTooltipValueFn",    
+    type: 'MRT_FilterTooltipValueFn',
   },
   {
     columnOption: 'filterVariant',

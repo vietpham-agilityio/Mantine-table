@@ -164,9 +164,12 @@ export const MRT_EditCellTextInput = <TData extends MRT_RowData>({
         value={value}
         {...(selectProps as MRT_MultiSelectProps)}
         onBlur={handleBlur}
-        onChange={(value) => {
+        onChange={(newValue) => {
           (selectProps as MRT_MultiSelectProps).onChange?.(value as any);
-          setValue(value);
+          setValue(newValue);
+          // Save if not in focus, otherwise it will be handled by onBlur
+          if (document.activeElement === editInputRefs.current[cell.id]) return;
+          saveInputValueToRowCache(newValue as any);
         }}
         onClick={(e) => {
           e.stopPropagation();

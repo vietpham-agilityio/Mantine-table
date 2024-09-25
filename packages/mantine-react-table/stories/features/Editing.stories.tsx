@@ -421,6 +421,30 @@ export const EditMultiSelectVariant = () => {
   );
 };
 
+export const EditMultiSelectVariantModal = () => {
+  const [tableData, setTableData] = useState(data);
+
+  const handleSaveRow: MRT_TableOptions<Person>['onEditingRowSave'] = ({
+    exitEditingMode,
+    row,
+    values,
+  }) => {
+    tableData[+row.index] = values;
+    setTableData([...tableData]);
+    exitEditingMode();
+  };
+
+  return (
+    <MantineReactTable
+      columns={multiSelectColumns}
+      data={tableData}
+      enableEditing
+      enableRowActions
+      onEditingRowSave={handleSaveRow}
+    />
+  );
+};
+
 export const EditSelectVariant = () => {
   const [tableData, setTableData] = useState(data);
 

@@ -100,7 +100,7 @@
   /* end column pinning styles */
   /* row pinning styles */
   &[data-row-pinned] {
-    background-color: var(--mantine-color-body);
+    background-color: var(--mrt-pinned-row-background-color, --mantine-color-body);
     bottom: calc(var(--mrt-pinned-row-bottom) * 1px);
     opacity: 0.97;
     top: calc(var(--mrt-pinned-row-top) * 1px);
@@ -141,7 +141,7 @@
 
   /* selection styles */
   &[data-selected] {
-    background-color: var(--mantine-color-body);
+    background-color: var(--mrt-selected-row-background-color, --mantine-color-body);
 
     td {
       &[data-column-pinned] {

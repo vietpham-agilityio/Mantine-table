@@ -45,12 +45,6 @@ const Example = () => {
                   gap: '16px',
                 }}
               >
-                <img
-                  alt="avatar"
-                  height={30}
-                  src={row.original.avatar}
-                  style={{ borderRadius: '50%' }}
-                />
                 <span>{renderedCellValue}</span>
               </Box>
             ),
@@ -172,12 +166,6 @@ const Example = () => {
           padding: '16px',
         }}
       >
-        <img
-          alt="avatar"
-          height={200}
-          src={row.original.avatar}
-          style={{ borderRadius: '50%' }}
-        />
         <Box style={{ textAlign: 'center' }}>
           <Title>Signature Catch Phrase:</Title>
           <Text>&quot;{row.original.signatureCatchPhrase}&quot;</Text>

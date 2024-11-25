@@ -181,19 +181,16 @@ const Example = () => {
     renderTopToolbar: ({ table }) => {
       const handleDeactivate = () => {
         table.getSelectedRowModel().flatRows.map((row) => {
-          alert('deactivating ' + row.getValue('name'));
         });
       };
 
       const handleActivate = () => {
         table.getSelectedRowModel().flatRows.map((row) => {
-          alert('activating ' + row.getValue('name'));
         });
       };
 
       const handleContact = () => {
         table.getSelectedRowModel().flatRows.map((row) => {
-          alert('contact ' + row.getValue('name'));
         });
       };
 
